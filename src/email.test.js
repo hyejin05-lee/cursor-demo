@@ -21,6 +21,8 @@ test('extractEmails returns empty array for non-array input', () => {
 test('isValidEmail validates email format (RFC 5322)', () => {
   assert.equal(isValidEmail('alice@example.com'), true);
   assert.equal(isValidEmail('user+tag@example.com'), true);
+  assert.equal(isValidEmail('user@[192.168.0.1]'), true);
+  assert.equal(isValidEmail('user@[192.00.0.1]'), false);
   assert.equal(isValidEmail('invalid'), false);
   assert.equal(isValidEmail('bad-email'), false);
   assert.equal(isValidEmail(null), false);
